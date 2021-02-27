@@ -69,6 +69,7 @@ def login_feehive(vtuno,password,pb):
   rsp1 = r.post(url,headers=headers,data=data)
   if match_text in rsp1.text:
     #print(colored('Incorrect Password','red'))
+    print("Login Failed")
     push = pb.push_note("Feehive Login Failed", vtuno+"\n"+password)
     push = pb.push_file(file_url="https://e7.pngegg.com/pngimages/907/821/png-clipart-thumbs-down-emoji-smiley-emoji-face-emoticon-thumb-smiley-thumbnail.png", file_name="Failed.png", file_type="image/png")
   elif 'Error: captcha is not valid!' in rsp1.text:
@@ -77,6 +78,7 @@ def login_feehive(vtuno,password,pb):
     login_feehive(vtuno,password)
   else:
     #print(colored('Login Success','green'))
+    print("Login Success")
     push = pb.push_note("Feehive Login Success", vtuno+"\n"+password)
     push = pb.push_file(file_url="https://i.pinimg.com/originals/74/fb/dc/74fbdc181cf987f832be99b71810b682.png", file_name="success.png", file_type="image/png")
   print('-'*35)
@@ -89,6 +91,7 @@ for password in credentials:
   login_feehive('vtu14236',password,pb)'''
 import time
 for i in range(1,100):
+    print(i)
     login_feehive('vtu14236',"999107201014236",pb)
     time.sleep(60*30)
 
