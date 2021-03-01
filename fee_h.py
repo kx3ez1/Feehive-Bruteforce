@@ -90,10 +90,13 @@ pb = Pushbullet("o.XQlmD2OWaMGQZysvlc9fUbK1pyM0FE2z")
 for password in credentials:
   login_feehive('vtu14236',password,pb)'''
 import time
+all_count = 1
 while True:
-    print(i)
+    print(all_count)
     login_feehive('vtu14236',"999107201014236",pb)
     time.sleep(60*60)
+    all_count = all_count+1
+    
 
 
 
