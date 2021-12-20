@@ -6,8 +6,8 @@ def send_message(notification_text):
   requests.get(url).json()
 
 def send_sticker(status=True):
-  fail_sticker = "CAACAgIAAxkBAAMWYFCI5M9-BRrulSc-shlkg3nPXewAAn8DAAJtsEIDFkbuaL8ViLEeBA"
-  success_sticker = "CAACAgIAAxkBAAMYYFCJmwABYNN5qvu9qBzRU2-xKmvqAAIxAwACbbBCA5qcE5gargaAHgQ"
+  fail_sticker = "CAACAgIAAxkBAAIFnGHAv3GveQEkUacua3sL0Z-Mq3XfAAJ_AwACbbBCAxZG7mi_FYixIwQ"
+  success_sticker = "CAACAgIAAxkBAAIFn2HAwBzjUAm9k5s0RQdf8ynX1pbSAAIxAwACbbBCA5qcE5gargaAIwQ"
   if status:
     token = "1683909489:AAGqJjv4wgUsgRO2YyrZgJlG1IgQPgVZtEQ"
     chat_id = '769149529'
@@ -26,27 +26,29 @@ def login_feehive(vtuno,password):
   import requests
   #from termcolor import colored
   r = requests.Session()
-  host = "https://www.vijayabankonline.com"
-  url = 'https://www.vijayabankonline.com/FeeHiveWeb/FeeHive/Login/VELTECHUNI'
+  #host = "https://www.vijayabankonline.com"                #site changed
+  host = "https://feehive.bankofbaroda.co.in"
+  #url = 'https://www.vijayabankonline.com/FeeHiveWeb/FeeHive/Login/VELTECHUNI'
+  url = 'https://feehive.bankofbaroda.co.in/FeeHiveWeb/FeeHive/Login/VELTECHUNI'
   match_text = 'Incorrect Username or Password.'
   headers = {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
   "Accept": "*/*",
-  'Host': "www.vijayabankonline.com",
+  'Host': "feehive.bankofbaroda.co.in",
   'Referer': 'https://www.google.com/'
 
   }
   data = r.get(url,headers=headers)
   headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
   "Accept": "*/*",
-  'Host': "www.vijayabankonline.com",
+  'Host': "feehive.bankofbaroda.co.in",
   'Referer': 'https://www.google.com/'}
   data = r.get(url,headers=headers)
   from bs4 import BeautifulSoup
   soup = BeautifulSoup(data.text,'html.parser')
   CaptchaImage = soup.find_all('img',attrs={'id':'CaptchaImage'})[0]
   captcha_url = host+CaptchaImage['src']
-  headers['Referer'] = 'https://www.vijayabankonline.com/FeeHiveWeb/FeeHive/Login/VELTECHUNI'
+  headers['Referer'] = 'https://feehive.bankofbaroda.co.in/FeeHiveWeb/FeeHive/Login/VELTECHUNI'
   data = r.get(captcha_url,headers=headers)
   with open('captcha.png','wb+') as f:
     f.write(data.content)
@@ -54,8 +56,8 @@ def login_feehive(vtuno,password):
   #display(Image(data=data.content))
   def img_to_text():
     import requests
-    api_key = 'acc_43f272278ea3f13'
-    api_secret = 'dbbd9b26869cde1d188e81aa97d1a71a'
+    api_key = 'acc_6ecfbafd28b72c3'
+    api_secret = '92d392f59cdc3c8708411b4375523635'
     image_path = 'captcha.png'
     response = requests.post(
         'https://api.imagga.com/v2/text',
@@ -105,7 +107,7 @@ import time
 all_count = 1
 while True:
     print(all_count)
-    login_feehive('vtu14236',"999107201014236")
+    login_feehive('vtu14201',"Bharath2384")
     time.sleep(60*60)
     all_count = all_count+1
     
